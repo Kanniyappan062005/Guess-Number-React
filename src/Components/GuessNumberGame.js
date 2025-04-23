@@ -1,7 +1,8 @@
 import { useState } from "react";
+import guessGameLogo from "../guess-game-logo.png"
 
 function GuessNumberGame() {
-    const [count, setCount] = useState(0); // Default guess is 1
+    const [count, setCount] = useState(1); // Default guess is 1
     const [message, setMessage] = useState("Let's begin the game!");
     const [guessesLeft, setGuessesLeft] = useState(3);
     const [messageColor, setMessageColor] = useState("text-violet-700");
@@ -36,7 +37,7 @@ function GuessNumberGame() {
         } else {
             const newGuessesLeft = guessesLeft - 1;
             setGuessesLeft(newGuessesLeft);
-            setMessage(`❌ Wrong! The number was: ${computerChoice}${newGuessesLeft === 0 ? " 💀 Game Over!" : ""}`);
+            setMessage(`❌ Wrong! The Generator number was: ${computerChoice}${newGuessesLeft === 0 ? " 💀 Game Over!" : ""}`);
             setMessageColor("text-red-900");
 
             if (newGuessesLeft === 0) {
@@ -47,7 +48,17 @@ function GuessNumberGame() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-200 to-red-400 text-white px-5 py-10 sm:shadow-[0_0_15px_rgba(0,0,0,0.5)]-md sm:px-5 sm:py-10">
-            <h1 className="text-2xl font-bold mb-6 shadow-md sm:text-4xl">🎯 Guess the Number (1 to 5)</h1>
+            <h1 className="text-4xl text-black font-bold absolute top-[100px] text-center">Counter And Generator Number</h1>
+            <div className="flex justify-center">
+                <img
+                    src={guessGameLogo}
+                    style={{ width: "50px", height: "50px", mixBlendMode: "color-burn" }}
+                    alt="Logo"
+                />
+                <h1 className="text-2xl font-bold mb-6 shadow-md sm:text-4xl">
+                    Guess the Number (1 to 5)
+                </h1>
+            </div>
             <div className="flex items-center gap-4 mb-4">
                 <button
                     onClick={decrement}
